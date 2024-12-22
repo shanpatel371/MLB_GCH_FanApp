@@ -1,7 +1,0 @@
-{
-  "name": "MLB_FanApp",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
