@@ -1,36 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
 import axios from 'axios';
+import { signIn } from '../components/signin';
 
-// Define the structure of the user object
-interface User {
-  name: string;
-  age: number;
-}
+// import * as WebBrowser from "expo-web-browser";
+// import * as Google from "expo-auth-session";
+// import * as AsyncStorage from "@react-native-async-storage/async-storage";
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
+
+GoogleSignin.configure({
+  scopes: ['https://www.googleapis.com/auth/drive.readonly'], // what API you want to access on behalf of the user, default is email and profile
+  offlineAccess: false, // if you want to access Google API on behalf of the user FROM YOUR SERVER
+  forceCodeForRefreshToken: false, // [Android] related to `serverAuthCode`, read the docs link below *.
+  iosClientId: '67308592614-921i04bvh2blokfv1lldr7q0i67h5g8e.apps.googleusercontent.com',
+});
+
+// ios client id: 67308592614-921i04bvh2blokfv1lldr7q0i67h5g8e.apps.googleusercontent.com
 
 const App = () => {
   // Specify the state type as 'User | null', meaning it can be a User object or null initially
-  const [user, setUser] = useState<User | null>(null);
-
-  useEffect(() => {
-    // Fetch data from the backend (make sure the backend is running on the correct port)
-    axios.get('http://localhost:3000/api/user')
-      .then(response => {
-        setUser(response.data); // Assuming the backend sends a user object
-      })
-      .catch(error => {
-        console.error('Error fetching user:', error);
-      });
-  }, []);
+  const [user, setUser] = useState(null);
 
   return (
     <View>
       <Text>Welcome to the MLB Fan App</Text>
-      {user ? (
-        <Text>User: {user.name}</Text> 
-      ) : (
-        <Text>Loading...</Text>
-      )}
+      <GoogleSigninButton
+        size={GoogleSigninButton.Size.Wide}
+        color={GoogleSigninButton.Color.Dark}
+        onPress={signIn}
+      />
     </View>
   );
 };

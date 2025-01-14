@@ -1,0 +1,8 @@
+{
+  "android": {
+    "package": "com.anonymous.mlb_gch_fanapp"
+  },
+  "ios": {
+    "bundleIdentifier": "com.anonymous.mlb-gch-fanapp"
+  }
+}
