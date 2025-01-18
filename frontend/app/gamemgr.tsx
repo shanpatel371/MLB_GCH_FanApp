@@ -25,7 +25,6 @@ const GameManager = () => {
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>View Active Games</Text>
         </TouchableOpacity>
-
       </View>
     </ScrollView>
   );
