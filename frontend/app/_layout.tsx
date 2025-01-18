@@ -23,6 +23,16 @@ export default function RootLayout() {
       />
 
       <Tabs.Screen
+        name="gamemgr"
+        options={{
+          title: "Game Manager",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="game-controller" color={color} size={size} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
         name="profile"
         options={{
           title: "Profile",
