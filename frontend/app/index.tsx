@@ -35,7 +35,7 @@ export default function HomeScreen() {
 
       {/* Call-to-Action Section with Navigation to Profile Page */}
       <View style={styles.callToAction}>
-        <Link href="/profile" style={styles.startButton}>
+        <Link href="../pages/profile" style={styles.startButton}>
           <Text style={styles.startButtonText}>Start Picking Players!</Text>
         </Link>
       </View>

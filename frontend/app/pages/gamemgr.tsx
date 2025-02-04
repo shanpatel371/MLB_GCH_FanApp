@@ -1,7 +1,29 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { useRouter } from 'expo-router';
 
 const GameManager = () => {
+  const router = useRouter();
+
+  const handlePlayGame = () => {
+    router.push('./GameView');
+  };
+
+  const handleFriendsLeaderboard = () => {
+    router.push({
+      pathname: './LeaderBoard',
+      params: { type: 'Friends' }, // Passing 'friends' leaderboard
+    });
+  };
+
+  const handleGlobalLeaderboard = () => {
+    router.push({
+      pathname: './LeaderBoard',
+      params: { type: 'Global' }, // Passing 'friends' leaderboard
+    });
+  };
+
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.header}>Game Manager</Text>
@@ -10,20 +32,20 @@ const GameManager = () => {
       </Text>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Create a Game</Text>
+        <TouchableOpacity style={styles.button} onPress={handlePlayGame}>
+          <Text style={styles.buttonText}>Play Today's Game</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Join a Game</Text>
+          <Text style={styles.buttonText}>Add a friend</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Join Global Games</Text>
+        <TouchableOpacity style={styles.button} onPress={handleFriendsLeaderboard}>
+          <Text style={styles.buttonText}>See Friends Leaderboard</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>View Active Games</Text>
+        <TouchableOpacity style={styles.button} onPress={handleGlobalLeaderboard}>
+          <Text style={styles.buttonText}>See Global</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
