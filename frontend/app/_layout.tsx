@@ -1,18 +1,18 @@
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
-import { AuthProvider, useAuth } from './AuthContext'; // Import AuthProvider and useAuth
+// import { AuthProvider, useAuth } from './AuthContext'; // Import AuthProvider and useAuth
 
 export default function RootLayout() {
   return (
-    <AuthProvider>
+    //<AuthProvider>
       <AppTabs />
-    </AuthProvider>
+    //</AuthProvider>
   );
 }
 
 const AppTabs = () => {
-  const { isAuthenticated } = useAuth(); // Consume the authentication state
+  // const { isAuthenticated } = useAuth(); // Consume the authentication state
 
   return (
     <Tabs screenOptions={{ tabBarStyle: { position: 'relative' } }}>
@@ -33,16 +33,16 @@ const AppTabs = () => {
             <Ionicons name="game-controller" color={color} size={size} />
           ),
         }}
-        listeners={({ navigation }) => ({
-          tabPress: (e) => {
-            if (!isAuthenticated) {
-              e.preventDefault(); // Prevent navigation to the "gamemgr" tab
-              navigation.navigate('profile'); // Redirect to the "profile" screen
-            }
-          },
-        })}
+        // listeners={({ navigation }) => ({
+        //   tabPress: (e) => {
+        //     // if (!isAuthenticated) {
+        //     //   e.preventDefault(); // Prevent navigation to the "gamemgr" tab
+        //     //   navigation.navigate('profile'); // Redirect to the "profile" screen
+        //     // }
+        //   },
+        // })}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="profile"
         options={{
           title: 'Profile',
@@ -50,7 +50,8 @@ const AppTabs = () => {
             <Ionicons name="person" color={color} size={size} />
           ),
         }}
-      />
+      /> */}
     </Tabs>
   );
 };
+
